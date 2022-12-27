@@ -29,44 +29,64 @@ function closeModal() {
 //validation du formulaire
 
 // DOM Elements
-const first = document.getElementById('first');
-const last = document.getElementById('last');
-const email = document.getElementById('email');
+const first = document.getElementById("first");
+const last = document.getElementById("last");
+const email = document.getElementById("email");
 var mailvalid = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-//const birthdate = document.querySelectorAll('birthdate');
-//const quantity = document.querySelectorAll('quantity');
-//const location = document.querySelectorAll('location');
-//const checkbox1 = document.querySelectorAll('checkbox1');
-//const checkbox2 = document.querySelectorAll('checkbox2');
-const submitBouton = document.querySelector('.btn-submit')
+const birthdate = document.getElementById("birthdate");
 
-//submitBouton.addEventListener('click', validfirstname) pas besoin car declare 
+const quantity = document.getElementById("quantity");
+const locations = document.getElementById("location");
+const checkbox1 = document.getElementById("checkbox1");
+const checkbox2 = document.getElementById("checkbox2");
+const submitBouton = document.querySelector(".btn-submit");
+
+
+//let messageAlerte= document.createElement('p');
+//submitBouton.addEventListener('click', validfirstname) pas besoin car declare
 //dans l'html ligne 67
 
 function validate() {
-  console.log("test")
+  console.log("test");
 
   if (first.value < 2 || first.value === "") {
-    alert("Le prénom doit comporter 2 caractères minimum");
-    first.parentElement.setAttribute('data-error-visible', 'true');
+    //messageAlerte.texteContent='Veuillez entrer 2 caractères ou plus pour le champ du prénom.';
+    first.setAttribute('data-error-visible', true);
+    first.setAttribute('data-error', "Veuillez entrer 2 caractères ou plus pour le champ du prénom.");
     first.focus();
     return false;
   }
   if (last.value < 2 || last.value === "") {
-    alert("Le nom doit comporter 2 caractères minimum");
+    //messageAlerte.texteContent='Veuillez entrer 2 caractères ou plus pour le champ du nom.';
     last.focus();
     return false;
   }
 
-  
-  if(email.value.match(mailvalid))
-  {
-    return true; 
+  if (email.value.match(mailvalid)) {
+    return true;
+  } else {
+    //messageAlerte.texteContent='Vous devez saisir une adresse mail valide';
+    email.focus();
+    return false;
   }
-  else
-  {
-  alert("You have entered an invalid email address!");
-  email.focus();
-  return false;
+  if (birthdate.value === "") {
+    //messageAlerte.texteContent='Vous devez entrer votre date de naissance.';
+    birthdate.focus();
+    return false;
+  }
+  if (quantity.value <= 0) {
+    //messageAlerte.texteContent='Vous devez saisir un nombre de participations';
+    email.focus();
+    return false;
+  }
+  if (locations.valeur = "") {
+    //messageAlerte.texteContent='Vous devez choisir une option';
+    location.focus();
+    return false;
+   }
+  if (checkbox1.checked) {
+    //messageAlerte.texteContent='Vous devez vérifier que vous acceptez les termes et conditions.';
+    checkbox1.focus();
+    return false;
   }
 }
