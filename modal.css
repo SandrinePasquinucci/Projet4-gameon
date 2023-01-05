@@ -8,12 +8,16 @@
   margin: 0;
   padding: 0;
 }
+* {
+  /*border: solid 15px red;*/
+}
 /* Landing Page */
 
 body {
   margin: 0;
   display: flex;
   flex-direction: column;
+  /*mis en commentaire car l'image n'existe pas dans le dossier*/
   /*background-image: url("background.png");*/
   font-family: var(--font-default);
   font-size: 18px;
@@ -76,6 +80,9 @@ img {
     float: right;
     display: block;
   }
+  .main-navbar {
+    float: left;
+  }
 }
 
 @media screen and (max-width: 768px) {
@@ -86,11 +93,16 @@ img {
     position: absolute;
     right: 0;
     top: 0;
+    /*Modification pour centrer l'icone menu*/
+    padding: 12px 0px;
   }
   .topnav.responsive a {
     float: none;
     display: block;
     text-align: left;
+    /*rajouté pour rendre le menu responsive*/
+    padding: 12px 70px;
+    white-space: nowrap;
   }
 }
 
@@ -102,6 +114,8 @@ img {
     float: right;
     display: block;
     margin-top: -15px;
+    /*Modification pour centrer l'icone menu*/
+    padding-right: 0;
   }
 }
 
@@ -464,6 +478,8 @@ input[data-error]::after {
   height: 100%;
   display: block;
   padding: 0;
+  /*rajout pour eviter la déformation de l'image*/
+  object-fit: cover;
 }
 .copyrights {
   color: #fe142f;
@@ -479,6 +495,13 @@ footer {
   padding-left: 2vw;
   padding-right: 2vw;
   margin: 0 20px;
+}
+/*rajout du mode tablette pour éviter le débordement du titre*/
+@media (max-width: 991px) {
+  .hero-headline {
+    font-size: 2.5rem;
+    white-space: normal;
+  }
 }
 @media screen and (max-width: 800px) {
   .hero-section {
@@ -497,11 +520,14 @@ footer {
     display: none;
   }
   .hero-headline {
-    font-size: 4.5rem;
+    /* Modification pour éviter le débordement*/
+    font-size: 2.5rem;
     white-space: normal;
+    width: 55%;
   }
   .hero-text {
-    width: unset;
+    /* Modification pour éviter le débordement*/
+    width: 55%;
     font-size: 1.5rem;
   }
   .hero-img img {
