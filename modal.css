@@ -9,7 +9,7 @@
   padding: 0;
 }
 * {
-  /*border: solid 15px red;*/
+  border: solid 5px red;
 }
 /* Landing Page */
 
@@ -40,6 +40,8 @@ img {
 }
 .header-logo {
   float: left;
+  /*rajout pour cadrage */
+  width: 80%;
 }
 .main-navbar {
   float: right;
@@ -93,16 +95,11 @@ img {
     position: absolute;
     right: 0;
     top: 0;
-    /*Modification pour centrer l'icone menu*/
-    padding: 12px 0px;
   }
   .topnav.responsive a {
     float: none;
     display: block;
     text-align: left;
-    /*rajouté pour rendre le menu responsive*/
-    padding: 12px 70px;
-    white-space: nowrap;
   }
 }
 
@@ -113,9 +110,8 @@ img {
   .topnav a.icon {
     float: right;
     display: block;
-    margin-top: -15px;
-    /*Modification pour centrer l'icone menu*/
-    padding-right: 0;
+    /*Modification pour plus que ca decalle l'icone
+    margin-top: -15px;*/
   }
 }
 

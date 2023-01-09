@@ -48,7 +48,7 @@ console.log(locations);
 const checkbox1 = document.getElementById("checkbox1");
 const submitBouton = document.querySelector(".btn-submit");
 
-//submitBouton.addEventListener('click', validfirstname) pas besoin car declare
+//submitBouton.addEventListener('click', validate) pas besoin car declare
 //dans l'html ligne 67
 
 function validate() {
@@ -175,5 +175,12 @@ return false;
     checkbox1.closest("div").setAttribute("data-error-visible", false);
 
  }
+//Affichage de la page de remerciement à la place des éléments de la modale
+
+let modale= document.getElementById ("form-data");
+modale.innerHTML=""
+modale.classList.add("remerciements") ;
+remerciements.innerHTML= "<div><p>Merci pour votre inscription !</p></div>";
+
 }
 
