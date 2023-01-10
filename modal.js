@@ -36,7 +36,7 @@ function closeModal() {
 const first = document.getElementById("first");
 const last = document.getElementById("last");
 const email = document.getElementById("email");
-const birthdate =document.getElementById("birthdate");
+const birthdate = document.getElementById("birthdate");
 const quantity = document.getElementById("quantity");
 //const AllLocations = document.querySelectorAll('input[name="location"]');
 //const OneLocation = Array.prototype.slice.call(AllLocations).some(x => x.checked);
@@ -177,10 +177,29 @@ return false;
  }
 //Affichage de la page de remerciement à la place des éléments de la modale
 
-let modale= document.getElementById ("form-data");
-modale.innerHTML=""
-modale.classList.add("remerciements") ;
-remerciements.innerHTML= "<div><p>Merci pour votre inscription !</p></div>";
 
+//modale.classList.add("remerciements") ;
+//remerciements.innerHTML= "<div><p>Merci pour votre inscription !</p></div>";
+console.log("début");
+
+// premièrement je cache les élments de la modale
+formData[0].style.display = "none";
+formData[1].style.display = "none";
+formData[2].style.display = "none";
+formData[3].style.display = "none";
+formData[4].style.display = "none";
+formData[5].style.display = "none";
+formData[6].style.display = "none";
+
+console.log("caché");
+//enfin je modifie le texte des éléments restants (p + bouton)
+let texteRemerciement = document.querySelector(".text-label");
+console.log(texteRemerciement);
+texteRemerciement.textContent="Merci pour votre inscription !";
+texteRemerciement.style.padding = "400px 25px";
+texteRemerciement.style.fontSize= "30px";
+texteRemerciement.style.textAlign= "center";
+submitBouton.textContent="Fermer";
+return false;
 }
 
