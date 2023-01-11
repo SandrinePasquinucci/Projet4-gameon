@@ -15,6 +15,17 @@ const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const closeBtn = document.querySelector(".close");
 
+// DOM Elements sur lequel on veut tester le formulaire
+const first = document.getElementById("first");
+const last = document.getElementById("last");
+const email = document.getElementById("email");
+const birthdate = document.getElementById("birthdate");
+const quantity = document.getElementById("quantity");
+const locationsErreur = document.getElementById("location1");
+const checkbox1 = document.getElementById("checkbox1");
+
+// DOM Elements sur lequel on veut valider le formulaire
+const submitBouton = document.querySelector(".btn-submit");
 
 
 // launch modal event on écoute l'évènement click
@@ -26,27 +37,27 @@ closeBtn.addEventListener("click", closeModal);
 // launch modal form on change le contenu de notre élément
 function launchModal() {
   modalbg.style.display = "block";
+  let texteRemerciement = document.querySelector(".text-label");
+    
+    formData[0].style.display = "block";
+    formData[1].style.display = "block";
+    formData[2].style.display = "block";
+    formData[3].style.display = "block";
+    formData[4].style.display = "block";
+    formData[5].style.display = "block";
+    formData[6].style.display = "block";
+
+    texteRemerciement.textContent="A quel tournoi souhaitez-vous participer cette année ?";
+    texteRemerciement.style.padding = "0.5vw";
+    texteRemerciement.style.fontSize= "18px";
+    texteRemerciement.style.textAlign= "justify";
+    submitBouton.value="C'est parti";
 }
 function closeModal() {
   modalbg.style.display = "none";
 }
 
 
-// DOM Elements sur lequel on veut tester le formulaire
-const first = document.getElementById("first");
-const last = document.getElementById("last");
-const email = document.getElementById("email");
-const birthdate = document.getElementById("birthdate");
-const quantity = document.getElementById("quantity");
-//const AllLocations = document.querySelectorAll('input[name="location"]');
-//const OneLocation = Array.prototype.slice.call(AllLocations).some(x => x.checked);
-//console.log(OneLocation.value);
-//console.log(AllLocations);
-const locations = document.getElementsByName("location");
-const locationsErreur = document.getElementById("location1");
-console.log(locations);
-const checkbox1 = document.getElementById("checkbox1");
-const submitBouton = document.querySelector(".btn-submit");
 
 //submitBouton.addEventListener('click', validate) pas besoin car declare
 //dans l'html ligne 67
@@ -128,33 +139,35 @@ function validate() {
 } 
 //validation de la selection de la ville
 
-console.log(locations[0]);
-console.log(locations[1]);
-console.log(locations[2]);
-console.log(locations[3]);
-console.log(locations[4]);
-console.log(locations[5]);
-  if (locations[0].checked=== false && locations[1].checked=== false
-    && locations[2].checked=== false && locations[3].checked=== false
-    && locations[4].checked=== false && locations[5].checked=== false
-    ) 
-//if (OneLocation === False)
-{
-  console.log("décoché"); 
+//console.log(locations[0]);
+//console.log(locations[1]);
+//console.log(locations[2]);
+//console.log(locations[3]);
+//console.log(locations[4]);
+//console.log(locations[5]);
+//  if (locations[0].checked=== false && locations[1].checked=== false
+//    && locations[2].checked=== false && locations[3].checked=== false
+ //   && locations[4].checked=== false && locations[5].checked=== false
+ //   ) 
+  let AllLocations = document.querySelectorAll('input[name="location"]');
+let OneLocation = Array.prototype.slice.call(AllLocations).some(x => x.checked);
+console.log(AllLocations);
+console.log(OneLocation);
+if (OneLocation === false) {
+  console.log(OneLocation); 
   locationsErreur.closest("div").setAttribute("data-error-visible", true);
   locationsErreur
-     .closest("div")
-     .setAttribute(
+    .closest("div")
+    .setAttribute(
        "data-error",
-       "Vous devez choisir une ville."
+      "Vous devez choisir une ville."
      );
      locationsErreur.focus();
-return false;
+    return false;
   } 
   else {
-    locationsErreur.closest("div").setAttribute("data-error-visible", false);
-    console.log("coché");
-    //return false;
+   locationsErreur.closest("div").setAttribute("data-error-visible", false);
+  
    
    
  }
@@ -199,7 +212,14 @@ texteRemerciement.textContent="Merci pour votre inscription !";
 texteRemerciement.style.padding = "400px 25px";
 texteRemerciement.style.fontSize= "30px";
 texteRemerciement.style.textAlign= "center";
-submitBouton.textContent="Fermer";
+submitBouton.value="Fermer";
 return false;
 }
 
+submitBouton.addEventListener("click", ()=> {
+  if (submitBouton.value==="Fermer"){
+    
+    closeModal();
+    
+  }
+});
