@@ -78,7 +78,6 @@ function validate() {
   }
   //validation du nom
   if (last.value.length < 2) {
-   
     last.closest("div").setAttribute("data-error-visible", true);
     last
       .closest("div")
@@ -144,8 +143,7 @@ function validate() {
   let OneLocation = Array.prototype.slice
     .call(AllLocations)
     .some((x) => x.checked);
-   if (OneLocation === false) {
-   
+  if (OneLocation === false) {
     locationsErreur.closest("div").setAttribute("data-error-visible", true);
     locationsErreur
       .closest("div")
@@ -158,7 +156,6 @@ function validate() {
 
   //validation des conditions d'utilisation
   if (checkbox1.checked === false) {
- 
     checkbox1.closest("div").setAttribute("data-error-visible", true);
     checkbox1
       .closest("div")
@@ -173,8 +170,6 @@ function validate() {
   }
   //Affichage de la page de remerciement à la place des éléments de la modale
 
- 
-
   // premièrement je cache les élments de la modale
   formData[0].style.display = "none";
   formData[1].style.display = "none";
@@ -183,7 +178,6 @@ function validate() {
   formData[4].style.display = "none";
   formData[5].style.display = "none";
   formData[6].style.display = "none";
-
 
   //enfin je modifie le texte des éléments restants (p + bouton)
   let texteRemerciement = document.querySelector(".text-label");
