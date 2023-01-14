@@ -1,3 +1,4 @@
+//fonction permettant d'afficher le menu en fonction du support (desktop ou mobile)
 function editNav() {
   var x = document.getElementById("myTopnav");
   if (x.className === "topnav") {
@@ -7,9 +8,7 @@ function editNav() {
   }
 }
 
-//ouverture et fermeture du formulaire
-
-// DOM Elements on récupère l'élément sur lequel on veut détecter le clic'
+// DOM Elements on récupère l'élément sur lequel on veut détecter ouverture et fermeture du formulaire'
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
@@ -27,11 +26,11 @@ const checkbox1 = document.getElementById("checkbox1");
 // DOM Elements sur lequel on veut valider le formulaire
 const submitBouton = document.querySelector(".btn-submit");
 
-// launch modal event on écoute l'évènement click
+// launch modal event on écoute l'évènement click pour y affecter une fonction
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 closeBtn.addEventListener("click", closeModal);
 
-// launch modal form on change le contenu de notre élément
+// launch modal form on change le contenu de notre élément (détail des fonctions)
 function launchModal() {
   modalbg.style.display = "block";
   let texteRemerciement = document.querySelector(".text-label");
@@ -91,7 +90,7 @@ function validate() {
     last.closest("div").setAttribute("data-error-visible", false);
   }
   //validation de l'email
-  //utilisation d'un regex pour vérifier la validité de la saisie utilisateur
+  //utilisation d'un regex trouvé sur internet pour vérifier la validité de la saisie utilisateur
   let mailvalid = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
   if (mailvalid.test(email.value)) {
     email.closest("div").setAttribute("data-error-visible", false);
@@ -122,6 +121,8 @@ function validate() {
   }
   //validation du nombre de participation
   //utilisation d'un regex pour vérifier la validité de la saisie utilisateur
+  //[0-9] uniquement des chiffres de 0 à 9 pour exclure les lettres
+  //{1,2} nombre de repetition autorisé 1 valeur mini 2 valeur max
   let quantityvalid = /^[0-9]{1,2}$/;
   if (quantityvalid.test(quantity.value)) {
     quantity.closest("div").setAttribute("data-error-visible", false);
@@ -139,6 +140,8 @@ function validate() {
   //    && locations[2].checked=== false && locations[3].checked=== false
   //   && locations[4].checked=== false && locations[5].checked=== false
   //   )
+
+  //autre méthode trouvé sur internet plus propre ds le cas ou il y aurait plus de checkbox
   let AllLocations = document.querySelectorAll('input[name="location"]');
   let OneLocation = Array.prototype.slice
     .call(AllLocations)
@@ -168,6 +171,7 @@ function validate() {
   } else {
     checkbox1.closest("div").setAttribute("data-error-visible", false);
   }
+
   //Affichage de la page de remerciement à la place des éléments de la modale
 
   // premièrement je cache les élments de la modale
@@ -189,7 +193,7 @@ function validate() {
   submitBouton.value = "Fermer";
   return false;
 }
-
+//pour finir si je clique sur Fermer je valide mon formulaire donc réinitialise les champs de siasie
 submitBouton.addEventListener("click", () => {
   if (submitBouton.value === "Fermer") {
     closeModal();
